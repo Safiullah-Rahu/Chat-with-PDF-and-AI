@@ -382,7 +382,6 @@ class Chatbot:
         result = chain(chain_input)
 
         st.session_state["history"].append((query, result["answer"]))
-        #count_tokens_chain(chain, chain_input)
         return result["answer"]
 
 def count_tokens_chain(chain, query):
@@ -390,8 +389,7 @@ def count_tokens_chain(chain, query):
         result = chain.run(query)
         st.write(f'###### Tokens used in this conversation : {cb.total_tokens} tokens')
     return result 
-# from langchain.vectorstores import Chroma
-# from langchain.document_loaders import UnstructuredPDFLoader
+
 import PyPDF2
 @st.cache_data
 def load_docs(files):
@@ -414,8 +412,6 @@ def load_docs(files):
     return all_text
 
 
-
-
 @st.cache_resource
 def create_retriever(_embeddings, splits, retriever_type):
     if retriever_type == "SIMILARITY SEARCH":
@@ -432,10 +428,6 @@ def create_retriever(_embeddings, splits, retriever_type):
 
 @st.cache_resource
 def split_texts(text, chunk_size, overlap, split_method):
-
-    # Split texts
-    # IN: text, chunk size, overlap, split_method
-    # OUT: list of str splits
 
     st.sidebar.info("`Splitting doc ...`")
 
@@ -504,7 +496,6 @@ def doc_search(temperature):
 
         if 'past' not in st.session_state:
             st.session_state['past'] = ['Hey there!']
-        #user_input = get_text()
         is_ready, user_input = prompt_form()
         #is_readyy = st.button("Send")
         convo = []
@@ -532,30 +523,16 @@ def doc_search(temperature):
         mime="text/plain"
     )
 
-       
-def init():
-    load_dotenv()
-    st.set_page_config(layout="wide", page_icon="💬", page_title="AI Chatbot 🤖")
-
 def main(temperature):
-    # Initialize the app
-    #init()
-
     # Instantiate the main components
     layout, sidebar, utils = Layout(), Sidebar(), Utilities()
 
     layout.show_header()
 
-    #user_api_key = utils.load_api_key()
-
     if not user_api_key:
         layout.show_api_key_missing()
     else:
         os.environ["OPENAI_API_KEY"] = user_api_key
-
-        # search = st.sidebar.button("Web Search Chat")
-        # if search:
-        #     doc_search()
 
         uploaded_file = utils.handle_upload()
 
