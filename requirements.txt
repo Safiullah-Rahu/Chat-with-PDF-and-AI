@@ -1,12 +1,10 @@
 streamlit
-streamlit_chat
 langchain
-pdfplumber
-pandas
 openai
-tqdm
-python-dotenv
-pypdf
 tiktoken
-faiss-cpu
+pypdf
+pinecone-client
 PyPDF2
+pdfplumber
+openpyxl
+
