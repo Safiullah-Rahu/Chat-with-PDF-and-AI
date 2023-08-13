@@ -177,9 +177,9 @@ def chat(chat_na):
         st.session_state.messages.append({"role": "user", "content":prompt})
         # st.chat_message("user").write(prompt)
         # Display user message in chat message container
-        with st.chat_message("human", avatar=image_human ):
+        with st.chat_message("human", avatar= "https://raw.githubusercontent.com/Safiullah-Rahu/Chat-with-PDF-and-AI/main/avatars/human.png" ):
             st.markdown(prompt)
-        with st.chat_message("ai", avatar=image_ai ):
+        with st.chat_message("ai", avatar= "https://raw.githubusercontent.com/Safiullah-Rahu/Chat-with-PDF-and-AI/main/avatars/ai.png" ):
             message_placeholder = st.empty()
             agent = conversational_chat(prompt)
             st_callback = StreamlitCallbackHandler(st.container())
