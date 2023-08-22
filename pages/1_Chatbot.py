@@ -220,7 +220,7 @@ def chat(chat_na):
         # Display user message in chat message container
         with st.chat_message("human", avatar=image_human ):
             st.markdown(prompt)
-        with st.chat_message("ai", avatar=image_ai ):
+        with st.chat_message("ai", avatar="https://raw.githubusercontent.com/Safiullah-Rahu/Chat-with-PDF-and-AI/main/pages/ai.png" ):
             message_placeholder = st.empty()
             agent, docs = conversational_chat(prompt)
             st_callback = StreamlitCallbackHandler(st.container())
