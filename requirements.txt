@@ -7,4 +7,4 @@ pinecone-client
 PyPDF2
 pdfplumber
 openpyxl
-
+streamlit-authenticator
